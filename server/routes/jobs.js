@@ -44,7 +44,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // Delete a job by ID
-router.delete("/:id", validationToken, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const job = await Jobs.findByPk(id);

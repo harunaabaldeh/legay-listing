@@ -10,6 +10,7 @@ const Jobs = () => {
     });
   }, []);
 
+  console.log(jobs);
   return (
     <div>
       {jobs.map((value, key) => {
