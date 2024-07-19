@@ -10,10 +10,10 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    children: [{ path: "/", element: <Jobs /> }],
-    children: [{ path: "/:id", element: <Job /> }],
-    children: [{ path: "/apply", element: <CreateJob /> }],
-    children: [{ path: "/login", element: <Login /> }],
-    children: [{ path: "/register", element: <Register /> }],
+    // children: [{ path: "/", element: <Jobs /> }],
+    // children: [{ path: "/:id", element: <Job /> }],
+    // children: [{ path: "/apply", element: <CreateJob /> }],
+    // children: [{ path: "/login", element: <Login /> }],
+    // children: [{ path: "/register", element: <Register /> }],
   },
 ]);

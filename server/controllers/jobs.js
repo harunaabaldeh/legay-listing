@@ -1,11 +1,11 @@
-const { Jobs } = require("../models/job");
+const db = require("../models");
+const Jobs = db.Jobs;
 exports.getAllJobs = async (req, res) => {
-  const id = req.params.id;
-  const job = await Jobs.findByPk(id);
-  if (!job) {
+  const jobs = await Jobs.findAll();
+  if (!jobs) {
     return res.json({ message: "job does not exits" });
   }
-  res.json(job);
+  res.json(jobs);
 };
 
 exports.create = async (req, res) => {

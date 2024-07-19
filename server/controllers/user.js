@@ -1,7 +1,7 @@
-const express = require("express");
-const { Users } = require("../models");
 const bcrypt = require("bcrypt");
 const { sign } = require("jsonwebtoken");
+const db = require("../models");
+const Users = db.Users;
 
 exports.register = async (req, res) => {
   const { username, password } = req.body;

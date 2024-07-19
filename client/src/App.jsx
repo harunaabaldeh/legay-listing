@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      {/* <NavBar /> */}
+      <NavBar />
       {/* <Outlet /> */}
       <Jobs />
     </>

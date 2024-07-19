@@ -1,4 +1,5 @@
-const { Applications } = require("../models");
+const db = require("../models");
+const Applications = db.Applications;
 
 exports.getAllApplications = async (req, res) => {
   try {
