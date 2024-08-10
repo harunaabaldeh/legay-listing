@@ -13,16 +13,6 @@ const Jobs = () => {
   console.log(jobs);
   return (
     <div>
-      {/* {jobs.map((value, key) => {
-        return (
-          <div>
-            <div>{value.title}</div>
-            <div>{value.description}</div>
-            <div>{value.location}</div>
-            <div>{value.company}</div>
-          </div>
-        );
-      })} */}
       <div class="job-listings">
         <h2>Latest Job Listings</h2>
         {jobs.map((value, keey) => {
