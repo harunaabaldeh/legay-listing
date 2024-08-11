@@ -1,15 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 
-const SubmitApplication = () => {
+const SubmitApplication = ({ jobId }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [resume, setResume] = useState("");
   const [date, setDate] = useState();
-  const params = useParams();
 
-  const submitApplication = () => {
+  const submit = () => {
     const data = {
       name: name,
       email: email,
@@ -18,7 +16,7 @@ const SubmitApplication = () => {
     };
 
     axios
-      .post(`http://localhost:9000/${params.id}/applications`, data)
+      .post(`http://localhost:9000/${jobId}/applications`, data)
       .then((res) => {
         console.log(res.data);
       })
@@ -49,7 +47,7 @@ const SubmitApplication = () => {
         placeholder="date"
         onChange={(e) => setDate(e.target.value)}
       />
-      <button onClick={submitApplication}>Submit</button>
+      <button onClick={submit}>Submit</button>
     </div>
   );
 };

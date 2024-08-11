@@ -7,6 +7,8 @@ const Jobs = () => {
   useEffect(() => {
     axios.get("http://localhost:9000/jobs").then((response) => {
       setJobs(response.data);
+    }).catch((err) => {
+      console.log(err)
     });
   }, []);
 
