@@ -50,7 +50,7 @@ const CreateJob = () => {
           placeholder="posted_date"
           onChange={(e) => setPosted_date(e.target.value)}
         />
-        <button onSubmit={onSubmit}>Submit</button>
+        <button onClick={onSubmit}>Submit</button>
       </div>
     </div>
   );

@@ -7,23 +7,23 @@ const NavBar = () => {
       <nav>
         <ul>
           <li>
-            <Link href="#">Home</Link>
+            <Link to="#">Home</Link>
           </li>
           <li>
-            <Link href="#">Jobs</Link>
+            <Link to="#">Jobs</Link>
           </li>
           <li>
-            <Link href="#">Compnies</Link>
+            <Link to="#">Compnies</Link>
           </li>
           <li>
-            <Link href="#">Linkbout Us</Link>
+            <Link to="#">Linkbout Us</Link>
           </li>
           <li>
-            <Link href="#">Contact</Link>
+            <Link to="#">Contact</Link>
           </li>
         </ul>
       </nav>
-      <div class="search">
+      <div className="search">
         <h2>Find your dream job</h2>
         <form action="#" method="get">
           <input type="text" name="keywords" placeholder="Keywords" />

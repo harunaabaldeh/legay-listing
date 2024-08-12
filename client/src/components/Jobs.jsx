@@ -15,14 +15,14 @@ const Jobs = () => {
   console.log(jobs);
   return (
     <div>
-      <div class="job-listings">
+      <div className="job-listings">
         <h2>Latest Job Listings</h2>
-        {jobs.map((value, keey) => {
+        {jobs.map((job) => {
           return (
-            <ul>
+            <ul key={job.id}>
               <li>
-                <h3>{value.title}</h3>
-                <p>Company: {value.company}</p>
+                <h3>{job.title}</h3>
+                <p>Company: {job.company}</p>
                 <p>Location: India</p>
                 <p>Description: Good Web Developer</p>
                 <a href="#">Apply Now</a>

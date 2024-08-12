@@ -9,6 +9,9 @@ router.get("/", job.getAllJobs);
 // Create a new job listing.
 router.post("/", job.create);
 
+// apply for a job with authentication
+// router.post("/", validationToken, job.create);
+
 //  Fetch a specific job listing by ID.
 router.get("/:id", job.getJobById);
 

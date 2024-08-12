@@ -1,17 +1,12 @@
-import { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
-import NavBar from "./pages/NavBar";
-import Jobs from "./pages/Jobs";
-
-// import './App.css'
+import NavBar from "./components/NavBar";
+import Jobs from "./components/Jobs";
+import CreateJob from "./components/CreateJob"
 
 function App() {
-  useEffect;
-
   return (
     <>
       <NavBar />
-      {/* <Outlet /> */}
+      <CreateJob />
       <Jobs />
     </>
   );
