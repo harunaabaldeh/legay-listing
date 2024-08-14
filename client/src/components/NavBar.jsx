@@ -7,31 +7,19 @@ const NavBar = () => {
       <nav>
         <ul>
           <li>
-            <Link to="#">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="#">Jobs</Link>
+            <Link to="/submit-job">Submit Job</Link>
           </li>
           <li>
-            <Link to="#">Compnies</Link>
+            <Link to="/login">Login</Link>
           </li>
           <li>
-            <Link to="#">Linkbout Us</Link>
-          </li>
-          <li>
-            <Link to="#">Contact</Link>
+            <Link to="/register">Register</Link>
           </li>
         </ul>
       </nav>
-      <div className="search">
-        <h2>Find your dream job</h2>
-        <form action="#" method="get">
-          <input type="text" name="keywords" placeholder="Keywords" />
-          <input type="text" name="location" placeholder="Location" />
-          <input type="text" name="company" placeholder="Company" />
-          <button type="submit">Search</button>
-        </form>
-      </div>
     </>
   );
 };

@@ -17,11 +17,11 @@ const SubmitApplication = ({ jobId }) => {
 
     axios
       .post(`http://localhost:9000/${jobId}/applications`, data)
-      .then((res) => {
-        console.log(res.data);
+      .then((response) => {
+        console.log(response.data);
       })
-      .catch((e) => {
-        console.log(e);
+      .catch((error) => {
+        console.log(error);
       });
   };
 

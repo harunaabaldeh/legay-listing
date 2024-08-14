@@ -1,37 +1,41 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Search from "./Search";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:9000/jobs").then((response) => {
-      setJobs(response.data);
-    }).catch((err) => {
-      console.log(err)
-    });
+    axios
+      .get("http://localhost:9000/jobs")
+      .then((response) => {
+        setJobs(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
-  console.log(jobs);
   return (
-    <div>
+    <>
+      <Search />
       <div className="job-listings">
         <h2>Latest Job Listings</h2>
-        {jobs.map((job) => {
-          return (
-            <ul key={job.id}>
-              <li>
+        <ul>
+          {jobs.map((job) => {
+            return (
+              <li key={job.id}>
                 <h3>{job.title}</h3>
                 <p>Company: {job.company}</p>
                 <p>Location: India</p>
                 <p>Description: Good Web Developer</p>
                 <a href="#">Apply Now</a>
               </li>
-            </ul>
-          );
-        })}
+            );
+          })}
+        </ul>
       </div>
-    </div>
+    </>
   );
 };
 

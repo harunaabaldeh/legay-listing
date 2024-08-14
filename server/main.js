@@ -10,6 +10,10 @@ app.use(cors());
 
 const db = require("./models");
 
+// auth
+const authRoutes = require("./routes/user");
+app.use("/auth", authRoutes);
+
 // routes
 const jobsRouter = require("./routes/jobs");
 app.use("/jobs", jobsRouter);
