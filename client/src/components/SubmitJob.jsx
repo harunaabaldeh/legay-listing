@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const CreateJob = () => {
+const SubmitJob = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
@@ -10,7 +10,7 @@ const CreateJob = () => {
   const [posted_date, setPosted_date] = useState("");
 
   const navigate = useNavigate();
-  const onSubmit = () => {
+  const handleSubmitAsync = async () => {
     const data = {
       title: title,
       description: description,
@@ -18,7 +18,7 @@ const CreateJob = () => {
       company: company,
       posted_date: posted_date,
     };
-    axios.post("http://localhost:9000/jobs", data).then((res) => {
+    await axios.post("http://localhost:9000/jobs", data).then((res) => {
       if (res.status === 200) navigate("/");
     });
   };
@@ -51,9 +51,9 @@ const CreateJob = () => {
         placeholder="posted_date"
         onChange={(e) => setPosted_date(e.target.value)}
       />
-      <button onClick={onSubmit}>Submit</button>
+      <button onClick={handleSubmitAsync}>Submit</button>
     </div>
   );
 };
 
-export default CreateJob;
+export default SubmitJob;

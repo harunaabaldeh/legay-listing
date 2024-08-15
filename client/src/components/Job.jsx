@@ -5,23 +5,29 @@ import axios from "axios";
 
 const Job = () => {
   const [job, setJob] = useState({});
-
   const { job_id } = useParams();
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:9000/jobs/${job_id}`)
-      .then((response) => {
-        setJob(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const fetchJobAsync = async () => {
+      axios
+        .get(`http://localhost:9000/jobs/${job_id}`)
+        .then((response) => {
+          setJob(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
+    fetchJobAsync();
   }, []);
 
   return (
-    <div>
+    <div className="job-page">
       <h1>{job.title}</h1>
+      <p>{job.description}</p>
+      <p>{job.location}</p>
+      <p>{job.company}</p>
       <SubmitApplication job_id={job_id} />
     </div>
   );

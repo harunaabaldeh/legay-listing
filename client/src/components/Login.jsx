@@ -5,19 +5,16 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
-  const onSubmit = (e) => {
-    e.preventDefault();
 
+  const handleLoginAsync = async () => {
     const data = {
       username: username,
       passoword: password,
     };
-    axios
+    await axios
       .post("http://localhost:9000/auth/login", data)
       .then((response) => {
-        console.log(response.data);
         if (response.status === 200) navigate("/");
       })
       .catch((error) => {
@@ -39,8 +36,7 @@ const Login = () => {
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
       />
-
-      <button onClick={onSubmit}>Login</button>
+      <button onClick={handleLoginAsync}>Login</button>
     </div>
   );
 };

@@ -7,14 +7,18 @@ const Jobs = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:9000/jobs")
-      .then((response) => {
-        setJobs(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const fetchJobsAsync = async () => {
+      await axios
+        .get("http://localhost:9000/jobs")
+        .then((response) => {
+          setJobs(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
+    fetchJobsAsync();
   }, []);
 
   return (

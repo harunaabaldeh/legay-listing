@@ -137,7 +137,7 @@ footer {
   flex-direction: column;
   align-items: center;
   align-content: center;
-  margin-top: 100px;
+  /* margin-top: 100px; */
 }
 
 /* REGISTER */
@@ -147,7 +147,7 @@ footer {
   align-items: center;
   align-content: center;
   padding: 12px;
-  margin-top: 100px;
+  /* margin-top: 100px; */
 }
 
 /* Create job */
@@ -159,9 +159,8 @@ footer {
 }
 
 .create-job-container input {
-  width: 50%;
-  height: 100%;
-  margin-top: 12px;
+  margin: 5px;
+  padding: 5px;
 }
 
 .login-container input {
@@ -178,4 +177,25 @@ button {
   padding: 5px;
   width: 14%;
   color: blue;
+}
+
+/* Submit Application */
+.submit-job-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.submit-job-container input {
+  margin: 5px;
+  padding: 5px;
+}
+
+/* Job Page */
+.job-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
 }

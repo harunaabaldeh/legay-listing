@@ -7,13 +7,12 @@ const Register = () => {
   const [passoword, setPassword] = useState("");
 
   const navigate = useNavigate();
-  const register = () => {
+  const handleRegisterAsync = async () => {
     const data = {
       username: username,
       passoword: passoword,
     };
-
-    axios
+    await axios
       .post("http://localhost:9000/auth/register", data)
       .then((response) => {
         if (response.status === 200) navigate("/login");
@@ -36,7 +35,7 @@ const Register = () => {
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={register}>Sign Up</button>
+      <button onClick={handleRegisterAsync}>Sign Up</button>
     </div>
   );
 };

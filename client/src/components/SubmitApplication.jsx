@@ -1,27 +1,27 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SubmitApplication = ({ job_id }) => {
-  const [applicationName, setApplicationName] = useState("");
-  const [applicationEmail, setApplicationEmail] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [resume, setResume] = useState("");
-  const [applicationDate, setApplicationDate] = useState();
+  const [date, setDate] = useState();
+  const navigate = useNavigate();
 
-  const submit = () => {
+  const handleSubmitAsync = async () => {
     const data = {
-      name: applicationName,
-      email: applicationEmail,
+      application_name: name,
+      application_email: email,
       resume: resume,
-      date: applicationDate,
+      application_date: date,
       job_id: job_id,
     };
 
-    console.log(data);
-
-    axios
+    await axios
       .post(`http://localhost:9000/applications/${job_id}`, data)
       .then((response) => {
-        console.log(response.data);
+        if (response.status === 200) navigate("/");
       })
       .catch((error) => {
         console.log(error);
@@ -29,28 +29,32 @@ const SubmitApplication = ({ job_id }) => {
   };
 
   return (
-    <div>
+    <div className="submit-job-container">
       <input
+        required
         type="text"
         placeholder="name"
-        onChange={(e) => setApplicationName(e.target.value)}
+        onChange={(e) => setName(e.target.value)}
       />
       <input
+        required
         type="email"
         placeholder="email"
-        onChange={(e) => setApplicationEmail(e.target.value)}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <input
+        required
         type="text"
         placeholder="resume"
         onChange={(e) => setResume(e.target.value)}
       />
       <input
+        required
         type="date"
         placeholder="date"
-        onChange={(e) => setApplicationDate(e.target.value)}
+        onChange={(e) => setDate(e.target.value)}
       />
-      <button onClick={submit}>Submit</button>
+      <button onClick={handleSubmitAsync}>Submit</button>
     </div>
   );
 };
