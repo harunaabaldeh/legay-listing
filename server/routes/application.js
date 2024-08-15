@@ -4,9 +4,9 @@ const { Applications } = require("../models");
 const application = require("../controllers/application");
 
 // Fetch all applications for a specific job
-router.get("/:job_id/applications", application.getAllApplications);
+router.get("/:job_id", application.getAllApplications);
 
 // Submit an application for a specific job
-router.post("/:job_id/applications", application.create);
+router.post("/:job_id", application.create);
 
 module.exports = router;

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Search from "./Search";
+import { Link } from "react-router-dom";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -27,9 +28,10 @@ const Jobs = () => {
               <li key={job.id}>
                 <h3>{job.title}</h3>
                 <p>Company: {job.company}</p>
-                <p>Location: India</p>
-                <p>Description: Good Web Developer</p>
-                <a href="#">Apply Now</a>
+                <p>Location: {job.location}</p>
+                <p>Description: {job.description}</p>
+                <p>Date Posted: {job.posted_date}</p>
+                <Link to={`/jobs/${job.id}`}>Apply Now</Link>
               </li>
             );
           })}
