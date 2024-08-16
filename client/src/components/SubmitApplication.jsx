@@ -9,7 +9,8 @@ const SubmitApplication = ({ job_id }) => {
   const [date, setDate] = useState();
   const navigate = useNavigate();
 
-  const handleSubmitAsync = async () => {
+  const handleSubmitAsync = async (e) => {
+    e.preventDefault();
     const data = {
       application_name: name,
       application_email: email,
@@ -29,7 +30,7 @@ const SubmitApplication = ({ job_id }) => {
   };
 
   return (
-    <div className="submit-job-container">
+    <form className="submit-job-container" onSubmit={handleSubmitAsync}>
       <input
         required
         type="text"
@@ -54,8 +55,8 @@ const SubmitApplication = ({ job_id }) => {
         placeholder="date"
         onChange={(e) => setDate(e.target.value)}
       />
-      <button onClick={handleSubmitAsync}>Submit</button>
-    </div>
+      <button type="submit">Submit</button>
+    </form>
   );
 };
 

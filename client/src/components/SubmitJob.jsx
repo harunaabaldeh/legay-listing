@@ -8,9 +8,10 @@ const SubmitJob = () => {
   const [location, setLocation] = useState("");
   const [company, setCompany] = useState("");
   const [posted_date, setPosted_date] = useState("");
-
   const navigate = useNavigate();
-  const handleSubmitAsync = async () => {
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const data = {
       title: title,
       description: description,
@@ -24,35 +25,40 @@ const SubmitJob = () => {
   };
 
   return (
-    <div className="create-job-container">
+    <form className="create-job-container" onSubmit={handleSubmit}>
       <h1>Post a job</h1>
       <input
         type="text"
         placeholder="title"
+        required
         onChange={(e) => setTitle(e.target.value)}
       />
       <input
         type="text"
         placeholder="description"
+        required
         onChange={(e) => setDescription(e.target.value)}
       />
       <input
         type="text"
         placeholder="location"
+        required
         onChange={(e) => setLocation(e.target.value)}
       />
       <input
         type="text"
         placeholder="company"
+        required
         onChange={(e) => setCompany(e.target.value)}
       />
       <input
         type="date"
         placeholder="posted_date"
+        required
         onChange={(e) => setPosted_date(e.target.value)}
       />
-      <button onClick={handleSubmitAsync}>Submit</button>
-    </div>
+      <button type="submit">Submit</button>
+    </form>
   );
 };
 
