@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import SubmitApplication from "./SubmitApplication";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../store/AuthContext";
 
 const Job = () => {
   const [job, setJob] = useState({});
   const { job_id } = useParams();
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     const fetchJobAsync = async () => {
@@ -34,7 +36,11 @@ const Job = () => {
         <i className="fa-regular fa-building"></i>
         {job.company}
       </p>
-      <SubmitApplication job_id={job_id} />
+      {isAuthenticated ? (
+        <SubmitApplication job_id={job_id} />
+      ) : (
+        <p>Loging to submit your application</p>
+      )}
     </div>
   );
 };
