@@ -26,8 +26,14 @@ const Job = () => {
     <div className="job-page">
       <h1>{job.title}</h1>
       <p>{job.description}</p>
-      <p>{job.location}</p>
-      <p>{job.company}</p>
+      <p>
+        <i className="fa-solid fa-location-dot"></i>
+        {job.location}
+      </p>
+      <p>
+        <i className="fa-regular fa-building"></i>
+        {job.company}
+      </p>
       <SubmitApplication job_id={job_id} />
     </div>
   );

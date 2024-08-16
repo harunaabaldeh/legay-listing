@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
@@ -140,6 +143,10 @@ footer {
   /* margin-top: 100px; */
 }
 
+.logout-button {
+  cursor: pointer;
+}
+
 /* REGISTER */
 .register-container {
   display: flex;
@@ -175,7 +182,7 @@ footer {
 
 button {
   padding: 5px;
-  width: 14%;
+  width: 15%;
   color: blue;
 }
 

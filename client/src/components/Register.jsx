@@ -1,25 +1,16 @@
-import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../store/AuthContext";
 
 const Register = () => {
   const [username, setUsername] = useState("");
-  const [passoword, setPassword] = useState("");
-
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { register } = useAuth();
+
   const handleRegisterAsync = async () => {
-    const data = {
-      username: username,
-      passoword: passoword,
-    };
-    await axios
-      .post("http://localhost:9000/auth/register", data)
-      .then((response) => {
-        if (response.status === 200) navigate("/login");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    await register(username, password);
+    navigate("/login");
   };
 
   return (
