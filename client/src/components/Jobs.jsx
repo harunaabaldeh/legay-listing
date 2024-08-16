@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Search from "./Search";
 import { Link } from "react-router-dom";
+import axiosInstance from "../api/axiosInstance";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
     const fetchJobsAsync = async () => {
-      await axios
-        .get("http://localhost:9000/jobs")
+      await axiosInstance
+        .get("/jobs")
         .then((response) => {
           setJobs(response.data);
         })

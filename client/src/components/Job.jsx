@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import SubmitApplication from "./SubmitApplication";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { useAuth } from "../store/AuthContext";
+import axiosInstance from "../api/axiosInstance";
 
 const Job = () => {
   const [job, setJob] = useState({});
@@ -11,8 +11,8 @@ const Job = () => {
 
   useEffect(() => {
     const fetchJobAsync = async () => {
-      axios
-        .get(`http://localhost:9000/jobs/${job_id}`)
+      axiosInstance
+        .get(`/jobs/${job_id}`)
         .then((response) => {
           setJob(response.data);
         })

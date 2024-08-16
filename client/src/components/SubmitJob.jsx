@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../api/axiosInstance";
 
 const SubmitJob = () => {
   const [title, setTitle] = useState("");
@@ -19,7 +20,7 @@ const SubmitJob = () => {
       company: company,
       posted_date: posted_date,
     };
-    await axios.post("http://localhost:9000/jobs", data).then((res) => {
+    await axiosInstance.post("/jobs", data).then((res) => {
       if (res.status === 200) navigate("/");
     });
   };
