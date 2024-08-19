@@ -18,5 +18,12 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
+  Applications.associate = (models) => {
+    Applications.belongsTo(models.Users, {
+      foreignKey: "userId",
+      onDelete: "SET NULL",
+    });
+  };
+
   return Applications;
 };

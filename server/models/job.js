@@ -24,8 +24,10 @@ module.exports = (sequelize, DataTypes) => {
 
   Jobs.associate = (models) => {
     Jobs.hasMany(models.Applications, {
+      foreignKey: "jobId",
       onDelete: "cascade",
     });
   };
+
   return Jobs;
 };

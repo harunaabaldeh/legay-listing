@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { validationToken } = require("../middlewares/auth_middleware");
+const { validationToken } = require("../middlewares/authMiddleware");
 const job = require("../controllers/jobs");
 
 //  Fetch all job listings.

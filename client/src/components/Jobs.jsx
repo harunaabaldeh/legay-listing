@@ -34,7 +34,7 @@ const Jobs = () => {
                 <p>Company: {job.company}</p>
                 <p>Location: {job.location}</p>
                 <p>Description: {job.description}</p>
-                <p>Date Posted: {job.posted_date}</p>
+                <p>Date Posted: {new Date(job.posted_date).toDateString()}</p>
                 <Link to={`/jobs/${job.id}`}>Apply Now</Link>
               </li>
             );

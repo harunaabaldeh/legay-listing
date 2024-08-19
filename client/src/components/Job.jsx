@@ -39,7 +39,7 @@ const Job = () => {
       {isAuthenticated ? (
         <SubmitApplication job_id={job_id} />
       ) : (
-        <p>Loging to submit your application</p>
+        <p>Login to submit your application</p>
       )}
     </div>
   );

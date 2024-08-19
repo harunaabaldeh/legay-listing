@@ -170,6 +170,12 @@ footer {
   padding: 5px;
 }
 
+.auth-text {
+  text-align: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
 .login-container input {
   margin: 5px;
   padding: 5px;

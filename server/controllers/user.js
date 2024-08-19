@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 const db = require("../models");
 const Users = db.Users;
+const Applications = db.Applications;
 
 exports.register = async (req, res) => {
   const { username, password } = req.body;
@@ -49,5 +50,32 @@ exports.login = async (req, res) => {
     res.json({ accessToken: accessToken });
   } catch (error) {
     res.status(500).json({ message: "Error logging in", error });
+  }
+};
+
+exports.profile = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+
+    const user = await Users.findOne({
+      where: {
+        id: userId,
+      },
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const applications = await Applications.findAll({
+      where: {
+        userId: userId,
+      },
+    });
+
+    return res.json({ applications: applications });
+  } catch (error) {
+    console.error("Error fetching applications:", error);
+    return res.status(500).json({ message: "Server error" });
   }
 };

@@ -1,8 +1,6 @@
-import axios from "axios";
 import { createContext, useContext, useState } from "react";
 import axiosInstance from "../api/axiosInstance";
 
-// Create an authentication context
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
@@ -12,12 +10,8 @@ export const AuthProvider = ({ children }) => {
   });
 
   const register = async (username, password) => {
-    const registerFormData = {
-      username: username,
-      password: password,
-    };
     await axiosInstance
-      .post("/auth/register", registerFormData)
+      .post("/auth/register", { username, password })
       .then((response) => {
         if (response.status === 200) {
           console.log("login was success. redirects needed");
@@ -29,12 +23,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const login = async (username, password) => {
-    const loginData = {
-      username: username,
-      password: password,
-    };
     await axiosInstance
-      .post("/auth/login", loginData)
+      .post("/auth/login", { username, password })
       .then((res) => {
         if (res.status === 200) {
           setUser(res.data.accessToken);
@@ -43,15 +33,7 @@ export const AuthProvider = ({ children }) => {
         }
       })
       .catch((error) => {
-        if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          console.log(error.request);
-        } else {
-          console.log("Error", error.message);
-        }
+        console.log(error);
       });
   };
 

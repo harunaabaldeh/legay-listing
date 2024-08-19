@@ -13,13 +13,16 @@ exports.getAllApplications = async (req, res) => {
   }
 };
 
-exports.create = async (req, res) => {
+exports.submitApplication = async (req, res) => {
   try {
     const jobId = req.params.job_id;
     const applicationData = req.body;
+    const userId = req.user.id;
+
     const newApplication = await Applications.create({
       ...applicationData,
       jobId,
+      userId,
     });
     res.status(201).json(newApplication);
   } catch (error) {

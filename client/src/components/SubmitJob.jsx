@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../api/axiosInstance";
+import { useAuth } from "../store/AuthContext";
 
 const SubmitJob = () => {
   const [title, setTitle] = useState("");
@@ -10,6 +11,7 @@ const SubmitJob = () => {
   const [company, setCompany] = useState("");
   const [posted_date, setPosted_date] = useState("");
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +26,13 @@ const SubmitJob = () => {
       if (res.status === 200) navigate("/");
     });
   };
+
+  if (!isAuthenticated)
+    return (
+      <h2 className="auth-text">
+        You need to login to be able to submit a job
+      </h2>
+    );
 
   return (
     <form className="create-job-container" onSubmit={handleSubmit}>
