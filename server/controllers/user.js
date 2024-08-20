@@ -3,6 +3,7 @@ const { sign } = require("jsonwebtoken");
 const db = require("../models");
 const Users = db.Users;
 const Applications = db.Applications;
+const Jobs = db.Jobs;
 
 exports.register = async (req, res) => {
   const { username, password } = req.body;
@@ -73,7 +74,18 @@ exports.profile = async (req, res) => {
       },
     });
 
-    return res.json({ applications: applications });
+    const userJobs = await Jobs.findAll({
+      where: {
+        userId: userId,
+      },
+    });
+
+    return res.json({
+      userData: {
+        applications: applications,
+        jobs: userJobs,
+      },
+    });
   } catch (error) {
     console.error("Error fetching applications:", error);
     return res.status(500).json({ message: "Server error" });

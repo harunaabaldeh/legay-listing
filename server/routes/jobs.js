@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const { validationToken } = require("../middlewares/authMiddleware");
+const authentication = require("../middlewares/authMiddleware");
 const job = require("../controllers/jobs");
 
 //  Fetch all job listings.
 router.get("/", job.getAllJobs);
 
 // Create a new job listing.
-router.post("/", job.create);
+router.post("/", authentication, job.create);
 
 // apply for a job with authentication
 // router.post("/", validationToken, job.create);

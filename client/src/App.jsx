@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Job from "./components/Job";
+import UserProfile from "./components/UserProfile";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/jobs/:job_id" element={<Job />} />
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
     </>
   );

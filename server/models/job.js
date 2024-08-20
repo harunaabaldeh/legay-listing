@@ -29,5 +29,12 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
+  Jobs.associate = (models) => {
+    Jobs.belongsTo(models.Users, {
+      foreignKey: "userId",
+      onDelete: "SET NULL",
+    });
+  };
+
   return Jobs;
 };

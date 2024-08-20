@@ -1,5 +1,6 @@
 const db = require("../models");
 const Jobs = db.Jobs;
+
 exports.getAllJobs = async (req, res) => {
   const jobs = await Jobs.findAll();
   if (!jobs) {
@@ -9,9 +10,14 @@ exports.getAllJobs = async (req, res) => {
 };
 
 exports.create = async (req, res) => {
-  const job = req.body;
-  await Jobs.create(job);
-  res.json(job);
+  const createJobRequest = req.body;
+  const userId = req.user.id;
+
+  await Jobs.create({
+    ...createJobRequest,
+    userId,
+  });
+  res.json(createJobRequest);
 };
 
 exports.getJobById = async (req, res) => {

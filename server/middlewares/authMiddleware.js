@@ -4,9 +4,14 @@ const db = require("../models");
 const Users = db.Users;
 
 const authenticate = async (req, res, next) => {
-  const token = req.header("Authorization").replace("Bearer ", "");
-  if (!token)
-    return res.json({ message: "Please authenticate! JTW is missing" });
+  const authHeader = req.header("Authorization");
+  if (!authHeader) {
+    return res
+      .status(401)
+      .json({ message: "Please authenticate! JTW is missing" });
+  }
+
+  const token = authHeader.replace("Bearer ", "");
 
   try {
     const decoded = jwt.verify(token, "super_secret_token");
