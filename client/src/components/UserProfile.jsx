@@ -1,4 +1,19 @@
+import { useEffect, useState } from "react";
+import axiosInstance from "../api/axiosInstance";
+import { useAuth } from "../store/AuthContext";
+
 const UserProfile = () => {
+  const [username, setUsername] = useState("");
+  const { userId } = useAuth();
+
+  useEffect(() => {
+    axiosInstance.get(`auth/profile/${userId}`).then((res) => {
+      console.log(res.data);
+      setUsername(res.data.userData.username);
+    });
+  }, []);
+
+  console.log("USERNAME " + username);
   return (
     <>
       <div className="bg-gray-100">
@@ -11,7 +26,7 @@ const UserProfile = () => {
                     src="https://randomuser.me/api/portraits/men/94.jpg"
                     className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
                   ></img>
-                  <h1 className="text-xl font-bold">John Doe</h1>
+                  <h1 className="text-xl font-bold"> {username}</h1>
                   <p className="text-gray-700">Software Developer</p>
                   <div className="mt-6 flex flex-wrap gap-4 justify-center">
                     <a

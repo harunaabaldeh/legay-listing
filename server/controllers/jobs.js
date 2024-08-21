@@ -48,12 +48,22 @@ exports.deleteJob = async (req, res) => {
   try {
     const id = req.params.id;
     const job = await Jobs.findByPk(id);
+    const requestUserId = req.user.id;
+
+    if (job.userId !== requestUserId) {
+      return res.json({
+        message: "You cannot delete jobs created by others",
+      });
+    }
+
     if (!job) {
       return res.status(404).json({ message: "Job does not exist" });
     }
     await job.destroy();
     res.json({ message: "Job deleted" });
   } catch (error) {
-    res.status(500).json({ message: "An error occurred", error });
+    res
+      .status(500)
+      .json({ message: "There was a problem while deleting the job", error });
   }
 };

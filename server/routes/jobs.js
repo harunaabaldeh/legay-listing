@@ -19,6 +19,6 @@ router.get("/:id", job.getJobById);
 router.put("/:id", job.updateJob);
 
 // Delete a job by ID
-router.delete("/:id", job.deleteJob);
+router.delete("/:id", authentication, job.deleteJob);
 
 module.exports = router;

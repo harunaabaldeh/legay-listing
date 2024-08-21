@@ -13,7 +13,7 @@ const SubmitApplication = ({ job_id }) => {
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
-
+    console.log("USE EFFECT " + token);
     if (token) {
       const decodedToken = jwtDecode(token);
       setUserId(decodedToken.id);
@@ -37,14 +37,17 @@ const SubmitApplication = ({ job_id }) => {
       userId: userId,
     };
 
+    const token = localStorage.getItem("accessToken");
+    console.log("TOKEEEEEEEEEEEEEEEEN " + token);
     await axiosInstance
       .post(`/applications/${job_id}`, data, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          Authorization: `${localStorage.getItem("accessToken")}`,
         },
       })
       .then((response) => {
-        if (response.status === 200) navigate("/");
+        console.log(response);
+        if (response.status === 201) navigate("/");
       })
       .catch((error) => {
         console.log(error);

@@ -15,6 +15,16 @@ exports.register = async (req, res) => {
   }
 
   try {
+    const existingUser = await Users.findOne({
+      where: {
+        username: username,
+      },
+    });
+
+    if (existingUser) {
+      return res.status(409).json({ message: "Username already exist" });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await Users.create({ username, password: hashedPassword });
     res
@@ -84,6 +94,7 @@ exports.profile = async (req, res) => {
       userData: {
         applications: applications,
         jobs: userJobs,
+        username: user.username,
       },
     });
   } catch (error) {

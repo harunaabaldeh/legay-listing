@@ -11,7 +11,6 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     await login(username, password);
-    navigate("/");
   };
 
   return (
