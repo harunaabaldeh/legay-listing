@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Search from "./Search";
+import JobSearch from "./JobSearch";
 import { Link } from "react-router-dom";
 import axiosInstance from "../api/axiosInstance";
 import { useAuth } from "../store/AuthContext";
@@ -29,7 +30,7 @@ const Jobs = () => {
 
   return (
     <>
-      <Search />
+      {/* <JobSearch /> */}
       <div className="job-listings">
         <h2>Latest Job Listings</h2>
         <ul>

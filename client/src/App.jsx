@@ -1,27 +1,34 @@
-import NavBar from "./components/NavBar";
-import Jobs from "./components/Jobs";
-import SubmitJob from "./components/SubmitJob";
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Job from "./components/Job";
-import UserProfile from "./components/UserProfile";
 import JobDetail from "./components/JobDetail";
 import JobPost from "./components/JobPost";
+import JobApplicationForm from "./components/JobApplicationForm";
+import Navbarr from "./components/NavBarr";
+import UserProfilee from "./components/UserProfilee";
+import Jobss from "./components/Jobss";
+import Footer from "./components/Footer";
+import AboutUs from "./components/AboutUs";
+import ContactUs from "./components/ContactUs";
+import BlogPage from "./components/BlogPage";
 
 const App = () => {
   return (
     <>
-      <NavBar />
-      {/* <JobPost /> */}
+      <Navbarr />
       <Routes>
-        <Route path="/" element={<Jobs />} />
+        <Route path="/" element={<Jobss />} />
         <Route path="/submit-job" element={<JobPost />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/jobs/:job_id" element={<JobDetail />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/jobs/:jobId" element={<JobDetail />} />
+        <Route path="/applications/:jobId" element={<JobApplicationForm />} />
+        <Route path="/profile" element={<UserProfilee />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/blog" element={<BlogPage />} />
       </Routes>
+      <Footer />
     </>
   );
 };

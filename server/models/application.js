@@ -1,10 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
   const Applications = sequelize.define("Applications", {
-    application_name: {
+    applicantName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    application_email: {
+    applicantEmail: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    application_date: {
+    dateApplied: {
       type: DataTypes.DATE,
       allowNull: false,
     },

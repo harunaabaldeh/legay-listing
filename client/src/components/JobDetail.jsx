@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import SubmitApplication from "./SubmitApplication";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../store/AuthContext";
 import axiosInstance from "../api/axiosInstance";
 
@@ -97,7 +96,7 @@ const JobDetail = () => {
 
       <div className="text-center">
         <button className="w-full sm:w-auto bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">
-          Apply Now
+          <Link to={`/applications/${job_id}`}>Apply Now</Link>
         </button>
       </div>
     </div>

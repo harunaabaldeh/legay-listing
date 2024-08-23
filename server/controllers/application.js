@@ -3,7 +3,7 @@ const Applications = db.Applications;
 
 exports.getAllApplications = async (req, res) => {
   try {
-    const jobId = req.params.job_id;
+    const jobId = req.params.jobId;
     const applications = await Applications.findAll({
       where: { jobId },
     });
@@ -15,7 +15,7 @@ exports.getAllApplications = async (req, res) => {
 
 exports.submitApplication = async (req, res) => {
   try {
-    const jobId = req.params.job_id;
+    const jobId = req.params.jobId;
     const applicationData = req.body;
     const userId = req.user.id;
 
